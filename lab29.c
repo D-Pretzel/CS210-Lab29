@@ -26,11 +26,11 @@ int getNumLines(char filename[]) {
 // Task 3:  Write your readFile Function Here
 void readFile(char filename[], vector* v, int numLines) {
    FILE* fp = fopen(filename, "r");
-   int count = 0;
-   char line[1024];
-   while (fgets(line, 1024, fp) != NULL) {
-      vector_set(v, count, atoi(line));
-      count++;
+
+   int val;
+   for (int i = 0; i < numLines; i++){
+      fscanf(fp, "%d,", &val);
+      vector_set(v, i, val);
    }
    fclose(fp);
 }

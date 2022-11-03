@@ -13,40 +13,41 @@
 
 // Task 1:  Write Your getNumLines Function Here
 int getNumLines(char filename[]) {
-      FILE* fp = fopen(filename, "r");
-      int count = 0;
-      char line[100];
-      while (fgets(line, 100, fp) != NULL) {
-         count++;
-      }
-      fclose(fp);
-      return count;
+   FILE* fp = fopen(filename, "r");
+   int count = 0;
+   char line[100];
+   while (fgets(line, 100, fp) != NULL) {
+      count++;
+   }
+   fclose(fp);
+   return count;
 }
 
 // Task 3:  Write your readFile Function Here
 void readFile(char filename[], vector* v, int numLines) {
-      FILE* fp = fopen(filename, "r");
-      int count = 0;
-      char line[100];
-      while (fgets(line, 100, fp) != NULL) {
-         vector_set(v, count, atoi(line));
-         count++;
-      }
-      fclose(fp);
+   FILE* fp = fopen(filename, "r");
+   int count = 0;
+   char line[1024];
+   while (fgets(line, 1024, fp) != NULL) {
+      vector_set(v, count, atoi(line));
+      count++;
+   }
+   fclose(fp);
 }
 
 
 int main(void)
 {
    // Task 2
-   //  With the functions provided in the Vector ADT,
-   //  create a correctly sized vector to read-in all
-   //  data from the lab29Data.csv file
+   //  With the functions provided in the Vector ADT, ceate a correctly sized vector to read-in all data from the lab29Data.csv file
    int numLines = getNumLines("lab29Data.csv");
 
    //Declare a vector and use the vector_create function to initalize it
    vector v;
    vector_create(&v, numLines);
+
+   //FIXME:
+   // printf("Vector Size: %d\n", v.size);
 
    // Task 4
    //  Utilize your readFile() function
@@ -82,7 +83,7 @@ int main(void)
    // Task 10
    //  With the functions provided in the Vector ADT,
    //  print the element at index 999
-   printf("Element at index 999: %d\n", *vector_at(&v, 999));
+   printf("After Erase element at index 999: %d\n", *vector_at(&v, 999));
 
    // Task 11
    //  With the functions provided in the Vector ADT,
